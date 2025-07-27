@@ -7,27 +7,35 @@ import { Card, CardContent } from '@/components/ui/card';
 const services = [
   {
     icon: Brain,
-    title: "AI Intelligence",
-    description: "Revolutionary AI systems that learn, adapt, and optimize your business operations automatically.",
-    gradient: "from-blue-500 to-purple-600"
+    title: "ERP",
+    description: "Streamlined enterprise resource planning for efficient business management.",
+    bgColor: "bg-white",
+    textColor: "text-gray-900",
+    gradient: "from-blue-500 to-purple-500"
   },
   {
     icon: Cloud,
-    title: "Cloud Mastery",
-    description: "Next-generation cloud platforms that scale infinitely with bulletproof security and performance.",
-    gradient: "from-purple-500 to-pink-600"
+    title: "IT Service",
+    description: "Comprehensive IT support and solutions for your business needs.",
+    bgColor: "bg-white",
+    textColor: "text-gray-900",
+    gradient: "from-cyan-500 to-blue-500"
   },
   {
     icon: Code,
-    title: "Digital Innovation",
-    description: "Custom software solutions that transform ideas into powerful, market-leading applications.",
-    gradient: "from-pink-500 to-red-600"
+    title: "Web & App Design",
+    description: "Creative and functional web and app design services.",
+    bgColor: "bg-white",
+    textColor: "text-gray-900",
+    gradient: "from-pink-500 to-yellow-500"
   },
   {
     icon: Shield,
-    title: "Cyber Defense",
-    description: "Military-grade security systems that protect your digital assets from evolving cyber threats.",
-    gradient: "from-red-500 to-orange-600"
+    title: "Security",
+    description: "Robust security solutions to protect your digital assets.",
+    bgColor: "bg-white",
+    textColor: "text-gray-900",
+    gradient: "from-green-500 to-emerald-500"
   }
 ];
 
@@ -68,40 +76,31 @@ export function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 8000); // Change image every 8 seconds for slow motion effect
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-      {/* Background Images with Slow Motion Transitions */}
+    <section className="relative min-h-screen overflow-hidden">
+      
+      {/* Full background image with overlay for both halves */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/50 z-10"></div>
-
         {backgroundImages.map((image, index) => (
           <motion.div
             key={index}
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('${image}')`
-            }}
+            style={{ backgroundImage: `url('${image}')` }}
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{
-              opacity: index === currentImageIndex ? 1 : 0,
-              scale: index === currentImageIndex ? [1.1, 1.05] : 1.1
-            }}
-            transition={{
-              opacity: { duration: 2, ease: "easeInOut" },
-              scale: { duration: 16, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
-            }}
+            animate={{ opacity: index === currentImageIndex ? 1 : 0, scale: index === currentImageIndex ? [1.1, 1.05] : 1.1 }}
+            transition={{ opacity: { duration: 2, ease: "easeInOut" }, scale: { duration: 16, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" } }}
           />
         ))}
       </div>
 
-      <div className="relative z-20 container mx-auto px-4 pt-20 pb-12">
-        {/* Hero Content */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          {/* Company Badge */}
+      <div className="relative z-20 container mx-auto px-4 py-20">
+        {/* Hero Content (Top half) */}
+        <div className="max-w-4xl mx-auto text-center mb-16 text-white">
           <motion.div
             className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20"
             initial={{ y: 30, opacity: 0 }}
@@ -112,13 +111,10 @@ export function HeroSection() {
             <Zap className="h-5 w-5 text-primary" />
             <span className="text-sm font-medium">{heroContent[currentImageIndex].badge}</span>
             <div className="flex space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-              ))}
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />)}
             </div>
           </motion.div>
 
-          {/* Main Heading */}
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ y: 30, opacity: 0 }}
@@ -155,7 +151,6 @@ export function HeroSection() {
               Start Your Journey
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-
             <Button
               variant="outline"
               size="lg"
@@ -166,7 +161,6 @@ export function HeroSection() {
             </Button>
           </motion.div>
 
-          {/* Stats */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
             initial={{ y: 30, opacity: 0 }}
@@ -199,95 +193,127 @@ export function HeroSection() {
               key={index}
               onClick={() => setCurrentImageIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                index === currentImageIndex
-                  ? 'bg-primary w-8'
-                  : 'bg-white/40 hover:bg-white/60'
+                index === currentImageIndex ? 'bg-primary w-8' : 'bg-white/40 hover:bg-white/60'
               }`}
               whileHover={{ scale: 1.2 }}
             />
           ))}
         </div>
+        </div>
+        
+              {/* Bottom half with background image and white card overlay */}
+   <div className="relative z-20 pt-12 pb-20">
+  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-white z-10" />
 
-        {/* Service Cards at Bottom of Hero - Matching Image Layout */}
+  <motion.div
+    className="max-w-7xl mx-auto relative z-20"
+    initial={{ y: 50, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+  >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        {
+          title: "AI & Machine Learning",
+          desc: "Next-gen AI algorithms and ML models for predictive analytics and automation.",
+          icon: "🧠",
+        },
+        {
+          title: "Cloud Infrastructure",
+          desc: "Scalable cloud architecture with enterprise-grade security and performance.",
+          icon: "☁️",
+        },
+        {
+          title: "Custom Software",
+          desc: "Bespoke applications built with cutting-edge technologies and frameworks.",
+          icon: "💻",
+        },
+        {
+          title: "Cybersecurity",
+          desc: "Advanced threat protection with real-time monitoring and incident response.",
+          icon: "🛡️",
+        },
+      ].map((service, index) => (
         <motion.div
-          className="max-w-7xl mx-auto"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          key={index}
+          initial={{ y: 80, opacity: 0, scale: 0.9 }}
+          whileInView={{ y: 0, opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: index * 0.2,
+            type: "spring",
+            stiffness: 120,
+          }}
+          whileHover={{ y: -12, scale: 1.05 }}
+          viewport={{ once: true }}
+          className="group"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((service, index) => (
+          <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition duration-500 h-full">
+            {/* Red gradient overlay on hover */}
+            <motion.div className="absolute inset-0 bg-gradient-to-br from-red-500 via-red-600 to-red-700 opacity-0 group-hover:opacity-90 transition duration-500" />
+            
+            {/* Animated red glow outline */}
+            <motion.div
+              className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-red-400/40 to-red-600/40 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"
+              animate={{ opacity: [0.3, 0.6, 0.3] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            />
+
+            <div className="p-6 text-left relative z-10 h-full flex flex-col justify-between">
               <motion.div
-                key={index}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                whileHover={{
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-                className="group"
+                className="flex items-center mb-5"
+                whileHover={{ rotate: [0, -5, 5, 0] }}
+                transition={{ duration: 0.6 }}
               >
-                <Card className={`h-48 relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${
-                  index === 1
-                    ? 'bg-primary text-white border-primary hover:bg-primary/90'
-                    : 'bg-white text-gray-900 border-gray-200 hover:border-primary hover:bg-primary hover:text-white hover:shadow-primary/20'
-                }`}>
-                  {/* Card Number */}
-                  <div className={`absolute top-4 right-4 text-xs font-medium transition-colors duration-300 ${
-                    index === 1 ? 'opacity-70' : 'opacity-70 group-hover:text-white/90'
-                  }`}>
-                    /{index + 1}
-                  </div>
+                <div className="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center text-3xl text-white shadow-lg mr-4 transition-all duration-300 group-hover:bg-white group-hover:text-red-600">
+                  {service.icon}
+                </div>
 
-                  <CardContent className="p-6 h-full flex flex-col justify-between relative z-10">
-                    <div>
-                      {/* Icon */}
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${
-                        index === 1
-                          ? 'bg-white/20 group-hover:bg-white/30 group-hover:scale-110'
-                          : 'bg-primary text-white group-hover:bg-white group-hover:text-primary group-hover:scale-110'
-                      }`}>
-                        <service.icon className="h-6 w-6 transition-transform duration-300" />
-                      </div>
-
-                      {/* Title */}
-                      <h3 className={`text-lg font-bold mb-3 transition-colors duration-300 ${
-                        index === 1
-                          ? 'text-white group-hover:text-white'
-                          : 'text-gray-900 group-hover:text-white'
-                      }`}>
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    {/* Description */}
-                    <p className={`text-sm leading-relaxed transition-colors duration-300 ${
-                      index === 1
-                        ? 'text-white/90 group-hover:text-white'
-                        : 'text-gray-600 group-hover:text-white/90'
-                    }`}>
-                      {service.description.length > 80
-                        ? service.description.substring(0, 80) + '...'
-                        : service.description}
-                    </p>
-                  </CardContent>
-
-                  {/* Enhanced hover effects */}
-                  <div className={`absolute inset-0 transition-all duration-500 ${
-                    index === 1
-                      ? 'bg-primary/10 opacity-0 group-hover:opacity-100'
-                      : 'bg-gradient-to-br from-primary to-accent opacity-0 group-hover:opacity-100'
-                  }`} />
-
-                  {/* Glow effect on hover */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-accent/50 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                </Card>
+                <motion.div
+                  className="bg-red-600 text-white px-2 py-1 rounded-full text-xs font-semibold shadow"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    delay: index * 0.3,
+                  }}
+                >
+                  /{index + 1}
+                </motion.div>
               </motion.div>
-            ))}
+
+              <motion.h3
+                className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 + index * 0.2 }}
+              >
+                {service.title}
+              </motion.h3>
+
+              <motion.p
+                className="text-base text-gray-600 leading-relaxed mt-2 group-hover:text-white/90 transition-colors duration-300"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.4 + index * 0.2 }}
+              >
+                {service.desc}
+              </motion.p>
+            </div>
           </div>
         </motion.div>
-      </div>
+      ))}
+    </div>
+  </motion.div>
+</div>
+
+
+
+
+
+
     </section>
   );
 }
