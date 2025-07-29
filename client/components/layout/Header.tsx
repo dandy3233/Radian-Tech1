@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Menu, X, Phone, Search, User, ChevronDown,
+  Menu, X, Phone, Search, User,
 } from 'lucide-react';
 import {
   FaFacebookF, FaTwitter, FaYoutube, FaTiktok,
@@ -13,8 +13,6 @@ import { Button } from '../ui/button';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [servicesDropdown, setServicesDropdown] = useState(false);
-  const [productsDropdown, setProductsDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,85 +95,15 @@ export function Header() {
                 Home
               </Link>
 
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setServicesDropdown(true)}
-                onMouseLeave={() => setServicesDropdown(false)}
-              >
-                <a
-                  href="/services"
-                  className="flex items-center space-x-1 cursor-pointer hover:text-primary font-medium"
-                >
-                  <span>Services</span>
-                  <ChevronDown className="h-4 w-4" />
-                </a>
+              <Link to="/services" className="hover:text-primary font-medium">
+                Services
+              </Link>
 
-                {servicesDropdown && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-md rounded-lg py-2 z-50">
-                    <Link
-                      to="/services/ai-intelligence"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      AI Intelligence
-                    </Link>
-                    <Link
-                      to="/services/cloud-mastery"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Cloud Mastery
-                    </Link>
-                    <Link
-                      to="/services/digital-innovation"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Digital Innovation
-                    </Link>
-                    <Link
-                      to="/services/cyber-defense"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Cyber Defense
-                    </Link>
-                  </div>
-                )}
-              </div>
+              <Link to="/products" className="hover:text-primary font-medium">
+                Products
+              </Link>
 
-              {/* Products Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setProductsDropdown(true)}
-                onMouseLeave={() => setProductsDropdown(false)}
-              >
-                <div className="flex items-center space-x-1 cursor-pointer hover:text-primary font-medium">
-                  <span>Products</span>
-                  <ChevronDown className="h-4 w-4" />
-                </div>
-                {productsDropdown && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-md rounded-lg py-2 z-50">
-                    <Link
-                      to="/products/product-a"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Product A
-                    </Link>
-                    <Link
-                      to="/products/product-b"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Product B
-                    </Link>
-                    <Link
-                      to="/products/product-c"
-                      className="block px-4 py-2 text-sm hover:text-primary"
-                    >
-                      Product C
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              <Link to="/about" className="hover:text-primary font-medium">
+              <Link to="/AboutUs" className="hover:text-primary font-medium">
                 About Us
               </Link>
             </nav>
@@ -189,9 +117,13 @@ export function Header() {
                 <Search className="h-5 w-5 text-muted-foreground" />
               </button>
 
-              <Button className="radian-gradient hover:opacity-90 text-white font-semibold px-6 py-2 shadow-lg hover:shadow-xl transition-all">
-                Get A Quote
-              </Button>
+              <Button
+  className="relative inline-flex items-center justify-center overflow-hidden text-white font-semibold px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-red-400"
+>
+  <span className="z-10">Get A Quote</span>
+  <span className="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-full"></span>
+</Button>
+
 
               <a
                 href="tel:+251911918269"
@@ -233,66 +165,13 @@ export function Header() {
                 Home
               </Link>
 
-              <div>
-                <div className="font-medium">Services</div>
-                <div className="ml-4">
-                  <Link
-                    to="/services/ai-intelligence"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    AI Intelligence
-                  </Link>
-                  <Link
-                    to="/services/cloud-mastery"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Cloud Mastery
-                  </Link>
-                  <Link
-                    to="/services/digital-innovation"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Digital Innovation
-                  </Link>
-                  <Link
-                    to="/services/cyber-defense"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Cyber Defense
-                  </Link>
-                </div>
-              </div>
+              <Link to="/services" className="block hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                Services
+              </Link>
 
-              <div>
-                <div className="font-medium">Products</div>
-                <div className="ml-4">
-                  <Link
-                    to="/products/product-a"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Product A
-                  </Link>
-                  <Link
-                    to="/products/product-b"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Product B
-                  </Link>
-                  <Link
-                    to="/products/product-c"
-                    className="block text-sm hover:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Product C
-                  </Link>
-                </div>
-              </div>
+              <Link to="/products" className="block hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                Products
+              </Link>
 
               <Link to="/about" className="block hover:text-primary" onClick={() => setIsMenuOpen(false)}>
                 About Us
@@ -300,7 +179,7 @@ export function Header() {
 
               <a href="tel:+251911918269" className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>09-11-91-82-69</span>
+                <span>09-27-44-61-71</span>
               </a>
               <a href="mailto:info@rofoel.com" className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <MdEmail className="h-4 w-4" />

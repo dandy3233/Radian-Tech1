@@ -1,48 +1,31 @@
 import { motion } from 'framer-motion';
-import { Brain, Cloud, Code, Shield, ArrowRight } from 'lucide-react';
+import { Brain, Cloud, Code, BarChart, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Tilt } from 'react-tilt';
 
-interface Service {
-  icon: any;
-  title: string;
-  subtitle: string;
-  description: string;
-  gradient: string;
-  delay: number;
-}
-
-const services: Service[] = [
+const services = [
   {
     icon: Brain,
     title: "AI & Machine Learning",
-    subtitle: "Solutions",
     description: "Next-gen AI algorithms and ML models for predictive analytics and automation.",
-    gradient: "from-blue-500 to-purple-600",
     delay: 0
   },
   {
     icon: Cloud,
     title: "Cloud Infrastructure",
-    subtitle: "Services",
     description: "Scalable cloud architecture with enterprise-grade security and performance.",
-    gradient: "from-purple-500 to-pink-600",
     delay: 0.2
   },
   {
     icon: Code,
     title: "Custom Software",
-    subtitle: "Development",
     description: "Bespoke applications built with cutting-edge technologies and frameworks.",
-    gradient: "from-pink-500 to-red-600",
     delay: 0.4
   },
   {
-    icon: Shield,
-    title: "Cybersecurity",
-    subtitle: "Excellence",
-    description: "Advanced threat protection with real-time monitoring and incident response.",
-    gradient: "from-red-500 to-orange-600",
+    icon: BarChart,
+    title: "ERP",
+    description: "Integrated business management software for streamlined operations and data-driven decisions.",
     delay: 0.6
   }
 ];
@@ -116,83 +99,81 @@ export function ServicesSection() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 100, opacity: 0, scale: 0.8 }}
-              whileInView={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: service.delay,
-                type: "spring",
-                stiffness: 100
-              }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.05 }}
-            >
-              <Card className="group border-0 bg-white/80 backdrop-blur-sm h-full overflow-hidden relative">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <CardContent className="p-8 text-center relative z-10">
-                  <motion.div 
-                    className="relative mb-6"
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <motion.div 
-                      className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}
-                      animate={{ 
-                        boxShadow: [
-                          "0 10px 30px rgba(0,0,0,0.1)",
-                          "0 20px 60px rgba(0,0,0,0.2)",
-                          "0 10px 30px rgba(0,0,0,0.1)"
-                        ]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      whileHover={{ scale: 1.1, rotateY: 180 }}
+            <Tilt options={{ max: 15, scale: 1.05, speed: 400 }} key={index}>
+              <motion.div
+                initial={{ y: 100, opacity: 0, scale: 0.8 }}
+                whileInView={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: service.delay,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.05 }}
+                className="group relative"
+              >
+                <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition duration-500 h-full">
+                  {/* Ripple effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-[#e01414] opacity-0 group-hover:opacity-90 transition duration-500"
+                    whileHover={{
+                      background: [
+                        "radial-gradient(circle at 50% 50%, rgba(224, 20, 20, 0.9) 0%, transparent 70%)",
+                        "radial-gradient(circle at 50% 50%, rgba(224, 20, 20, 0.9) 10%, transparent 80%)",
+                        "radial-gradient(circle at 50% 50%, rgba(224, 20, 20, 0.9) 0%, transparent 70%)",
+                      ],
+                    }}
+                    transition={{ duration: 0.6, repeat: Infinity, repeatType: "loop" }}
+                  />
+                  {/* Animated glow outline */}
+                  <motion.div
+                    className="absolute -inset-1 rounded-2xl bg-[#e01414]/40 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"
+                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  />
+                  <div className="p-6 text-left relative z-10 h-full flex flex-col justify-between">
+                    <motion.div
+                      className="flex items-center mb-5"
+                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
                     >
-                      <service.icon className="h-10 w-10 text-white" />
+                      <div className="w-16 h-16 bg-[#e01414] rounded-xl flex items-center justify-center shadow-lg mr-4 transition-all duration-300 group-hover:bg-white">
+                        <service.icon className="h-10 w-10 text-white group-hover:text-[#db0751]" />
+                      </div>
+                      {/* <motion.div
+                        className="bg-[#e01414] text-white px-2 py-1 rounded-full text-xs font-semibold shadow"
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "mirror",
+                          delay: index * 0.3,
+                        }}
+                      >
+                        /{index + 1}
+                      </motion.div> */}
                     </motion.div>
-                    <motion.div 
-                      className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                    <motion.h3
+                      className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.3 + service.delay }}
                     >
-                      /{index + 1}
-                    </motion.div>
-                  </motion.div>
-                  
-                  <motion.h3 
-                    className="text-xl font-bold text-gray-900 mb-1"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.3 + service.delay }}
-                  >
-                    {service.title}
-                  </motion.h3>
-                  
-                  <motion.h4 
-                    className="text-lg font-semibold text-primary mb-4"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.4 + service.delay }}
-                  >
-                    {service.subtitle}
-                  </motion.h4>
-                  
-                  <motion.p 
-                    className="text-muted-foreground text-sm leading-relaxed"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + service.delay }}
-                  >
-                    {service.description}
-                  </motion.p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                      {service.title}
+                    </motion.h3>
+                    <motion.p
+                      className="text-base text-gray-600 leading-relaxed mt-2 group-hover:text-white/90 transition-colors duration-300"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.4 + service.delay }}
+                    >
+                      {service.description}
+                    </motion.p>
+                  </div>
+                </div>
+              </motion.div>
+            </Tilt>
           ))}
         </div>
 

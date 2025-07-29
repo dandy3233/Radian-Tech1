@@ -36,7 +36,7 @@ export function LoadingPage({ onLoadingComplete, duration = 3000 }: LoadingPageP
         }
         return newProgress;
       });
-    }, duration / 50);
+    }, duration / 30);
 
     return () => clearInterval(interval);
   }, [duration, onLoadingComplete]);

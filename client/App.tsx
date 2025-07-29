@@ -13,6 +13,8 @@ import { LoadingProvider, useLoading } from "./hooks/useLoading";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
+import AboutUs from './pages/AboutUs';
+import Products from './pages/Products';
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 
@@ -42,7 +44,7 @@ const AppContent = () => {
             <Route path="/" element={<Index />} />
             <Route path="/solutions" element={<PlaceholderPage title="Our Solutions" description="Discover our comprehensive technology solutions designed for modern enterprises." />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/products" element={<PlaceholderPage title="Our Products" description="Discover our cutting-edge technology products and solutions." />} />
+            {/* <Route path="/products" element={<PlaceholderPage title="Our Products" description="Discover our cutting-edge technology products and solutions." />} /> */}
             <Route path="/testimonials" element={<PlaceholderPage title="Client Testimonials" description="See what our clients say about Radian-Tech's innovative solutions." />} />
             <Route path="/about" element={<PlaceholderPage title="About Us" description="Learn more about our company, mission, and team." />} />
             <Route path="/contact" element={<PlaceholderPage title="Contact Us" description="Get in touch with our team for consultations and support." />} />
@@ -50,13 +52,15 @@ const AppContent = () => {
             {/* Dynamic service detail route */}
             <Route path="/services/:id" element={<ServiceDetail />} />
 
+
             {/* Product-specific routes */}
-            <Route path="/products/product-a" element={<PlaceholderPage title="Product A" description="Our flagship technology solution designed for enterprise customers." />} />
+            <Route path="/Products" element={<Products />} />
+            {/* <Route path="/products/product-a" element={<PlaceholderPage title="Product A" description="Our flagship technology solution designed for enterprise customers." />} />
             <Route path="/products/product-b" element={<PlaceholderPage title="Product B" description="Advanced automation platform for streamlined business processes." />} />
-            <Route path="/products/product-c" element={<PlaceholderPage title="Product C" description="Comprehensive analytics suite for data-driven decision making." />} />
+            <Route path="/products/product-c" element={<PlaceholderPage title="Product C" description="Comprehensive analytics suite for data-driven decision making." />} /> */}
 
             {/* Company routes */}
-            <Route path="/about-us" element={<PlaceholderPage title="About Radian-Tech" description="Learn about our company, mission, and values." />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/careers" element={<PlaceholderPage title="Careers" description="Join our team of technology innovators." />} />
             <Route path="/tech-blog" element={<PlaceholderPage title="Tech Blog" description="Latest insights and trends in technology." />} />
 

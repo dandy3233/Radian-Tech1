@@ -2,6 +2,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import CompanyOverviewSection from '@/components/sections/CompanyOverviewSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { CTASection } from '@/components/sections/CTASection';
+// import { AboutUs } from '@/components/sections/AboutUs';
 import { Footer } from '@/components/layout/Footer';
 
 export default function Index() {

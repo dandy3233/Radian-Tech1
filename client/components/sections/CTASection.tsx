@@ -19,10 +19,10 @@ export function CTASection() {
              backgroundImage: `url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop&crop=center')`
            }}
       />
-      <div className="absolute inset-0 radian-gradient opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-500 to-gray-700 opacity-90"></div>
       
-      {/* Animated background effects */}
-      <motion.div
+      {/* Animated background effects (commented out as per original) */}
+      {/* <motion.div
         className="absolute inset-0 opacity-30"
         animate={{
           background: [
@@ -32,7 +32,7 @@ export function CTASection() {
           ]
         }}
         transition={{ duration: 8, repeat: Infinity }}
-      />
+      /> */}
       
       {/* Floating elements */}
       {Array.from({ length: 6 }, (_, i) => (
@@ -135,9 +135,23 @@ export function CTASection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300"
+                className="bg-transparent text-white border-2 border-white hover:bg-[#0184fa] hover:text-white px-12 py-4 text-lg font-bold rounded-full shadow-xl group relative overflow-hidden"
               >
-                View Case Studies
+                <motion.div
+                  className="absolute inset-0 bg-[#0184fa]"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+                <span className="relative z-10 flex items-center">
+                  View Case Studies
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="ml-3 h-6 w-6" />
+                  </motion.div>
+                </span>
               </Button>
             </motion.div>
           </motion.div>
