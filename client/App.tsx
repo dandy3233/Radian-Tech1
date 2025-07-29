@@ -46,7 +46,7 @@ const AppContent = () => {
             <Route path="/services" element={<Services />} />
             {/* <Route path="/products" element={<PlaceholderPage title="Our Products" description="Discover our cutting-edge technology products and solutions." />} /> */}
             <Route path="/testimonials" element={<PlaceholderPage title="Client Testimonials" description="See what our clients say about Radian-Tech's innovative solutions." />} />
-            <Route path="/about" element={<PlaceholderPage title="About Us" description="Learn more about our company, mission, and team." />} />
+            {/* <Route path="/about" element={<PlaceholderPage title="About Us" description="Learn more about our company, mission, and team." />} /> */}
             <Route path="/contact" element={<PlaceholderPage title="Contact Us" description="Get in touch with our team for consultations and support." />} />
 
             {/* Dynamic service detail route */}
