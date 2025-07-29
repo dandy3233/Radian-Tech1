@@ -173,7 +173,7 @@ export function Header() {
                 Products
               </Link>
 
-              <Link to="/about" className="block hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/AboutUs" className="block hover:text-primary" onClick={() => setIsMenuOpen(false)}>
                 About Us
               </Link>
 
