@@ -117,12 +117,15 @@ export function Header() {
                 <Search className="h-5 w-5 text-muted-foreground" />
               </button>
 
-              <Button
-  className="relative inline-flex items-center justify-center overflow-hidden text-white font-semibold px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-red-400"
->
-  <span className="z-10">Get A Quote</span>
-  <span className="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-full"></span>
-</Button>
+             <a href="ContactUs">
+  <Button
+    className="relative inline-flex items-center justify-center overflow-hidden text-white font-semibold px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-red-400"
+  >
+    <span className="z-10">Get A started</span>
+    <span className="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-full"></span>
+  </Button>
+</a>
+
 
 
               <a

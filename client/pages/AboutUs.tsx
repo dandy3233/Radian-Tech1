@@ -180,7 +180,7 @@ export default function AboutUs() {
                       Explore Services
                     </button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to="/ContactUs">
                     <button className="border border-[#0184fa] text-[#0184fa] px-6 py-3 rounded-lg font-medium hover:bg-[#0184fa] hover:text-white transition">
                       Contact Us
                     </button>

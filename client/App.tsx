@@ -14,6 +14,7 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import AboutUs from './pages/AboutUs';
+import { ContactUs } from './pages/ContactUs';
 import Products from './pages/Products';
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
@@ -47,7 +48,7 @@ const AppContent = () => {
             {/* <Route path="/products" element={<PlaceholderPage title="Our Products" description="Discover our cutting-edge technology products and solutions." />} /> */}
             <Route path="/testimonials" element={<PlaceholderPage title="Client Testimonials" description="See what our clients say about Radian-Tech's innovative solutions." />} />
             {/* <Route path="/about" element={<PlaceholderPage title="About Us" description="Learn more about our company, mission, and team." />} /> */}
-            <Route path="/contact" element={<PlaceholderPage title="Contact Us" description="Get in touch with our team for consultations and support." />} />
+            <Route path="/ContactUs" element={<ContactUs  />} />
 
             {/* Dynamic service detail route */}
             <Route path="/services/:id" element={<ServiceDetail />} />
