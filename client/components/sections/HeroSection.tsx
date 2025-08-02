@@ -42,21 +42,24 @@ const services = [
 
 const heroContent = [
   {
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&crop=center",
+    fallbackImage: "https://via.placeholder.com/1920x1080.png?text=Digital+Transformation",
     badge: "Radian-Tech • Innovation Leaders",
     title: "TRANSFORMING",
     highlight: "DIGITAL FUTURES",
     subtitle: "Pioneering next-generation technology solutions that revolutionize how businesses operate in the digital age."
   },
   {
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&h=1080&fit=crop&crop=center",
-    badge: "Radian-Tech • Enterprise Excellence",
+    image: "https://images.unsplash.com/photo-1516321310762-479437144403?w=1920&h=1080&fit=crop&crop=center",
+    fallbackImage: "https://via.placeholder.com/1920x1080.png?text=Global+Enterprises",
+    badge: "Radian-Tech • Global Solutions",
     title: "EMPOWERING",
     highlight: "GLOBAL ENTERPRISES",
     subtitle: "Delivering scalable technology infrastructure and strategic solutions for Fortune 500 companies worldwide."
   },
   {
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&h=1080&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e175b?w=1920&h=1080&fit=crop&crop=center",
+    fallbackImage: "https://via.placeholder.com/1920x1080.png?text=Intelligent+Systems",
     badge: "Radian-Tech • AI Specialists",
     title: "BUILDING",
     highlight: "INTELLIGENT SYSTEMS",
@@ -151,21 +154,21 @@ export function HeroSection() {
             key={index}
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('${image}')` }}
-            initial={{ opacity: 0, scale: 1.2 }}
+            initial={{ opacity: 0, scale: 1.1 }}
             animate={{
               opacity: index === currentImageIndex ? 1 : 0,
-              scale: index === currentImageIndex ? [1.2, 1.1] : 1.2,
+              scale: index === currentImageIndex ? 1 : 1.1,
             }}
             transition={{
-              opacity: { duration: 1.5, ease: "easeInOut" },
-              scale: { duration: 10, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
+              opacity: { duration: 1, ease: "circInOut" },
+              scale: { duration: 8, ease: "circInOut" },
             }}
           />
         ))}
       </div>
 
       <div className="relative z-20 container mx-auto px-4 py-20">
-        {/* Hero Content (Top half) */}
+        {/* Hero Content */}
         <motion.div
           className="max-w-4xl mx-auto text-center mb-16 text-white"
           initial={{ opacity: 0 }}
@@ -227,53 +230,37 @@ export function HeroSection() {
             transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.8 }}
           >
             <motion.div whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(1, 132, 250, 0.5)" }}>
-              <Button
+              {/* <Button
                 size="lg"
                 className="bg-[#0184fa] hover:bg-[#016dd5] text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg"
+                onClick={() => window.location.href = '/consultation'}
               >
-                Start Your Journey
+                Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              </Button> */}
             </motion.div>
             <motion.div whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(1, 132, 250, 0.5)" }}>
               <Button
                 variant="outline"
                 size="lg"
                 className="bg-white/10 backdrop-blur-md border-[#0184fa] text-white px-8 py-4 text-lg font-semibold rounded-full hover:bg-[#0184fa]/20"
+                onClick={() => window.location.href = '/Products'}
               >
                 <Play className="mr-2 h-5 w-5" />
-                Explore Solutions
+                View Our Solutions
               </Button>
             </motion.div>
           </motion.div>
+        </motion.div>
 
-          <motion.div
-            ref={ref}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+        <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 1 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.8 }}
           >
-            {[
-              { value: 500, suffix: "+", label: "Enterprise Clients" },
-              { value: 99.9, suffix: "%", label: "Uptime Guarantee" },
-              { value: "24/7", label: "AI Monitoring" },
-              { value: 150, suffix: "+", label: "Countries Served" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.2 }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-[#0184fa] mb-2">
-                  {stat.value === "24/7" ? "24/7" : inView ? <CountUp end={stat.value} duration={2} suffix={stat.suffix || ""} /> : "0"}
-                </div>
-                <div className="text-sm text-gray-300">{stat.label}</div>
-              </motion.div>
-            ))}
+            
           </motion.div>
-        </motion.div>
 
         {/* Image Transition Indicators */}
         <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
@@ -402,7 +389,48 @@ export function HeroSection() {
             ))}
           </div>
         </motion.div>
+        
       </div>
+      <section className="relative py-24 bg-gray-50">
+      <div className="container mx-auto px-6">
+        {/* <motion.h2
+          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 text-center tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          Our Impact
+        </motion.h2> */}
+        <motion.div
+          ref={ref}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.5 }}
+        >
+          {[
+            { value: 280, suffix: "+", label: "Enterprise Clients" },
+            { value: 99.9, suffix: "%", label: "Uptime Guarantee" },
+            { value: "24/7", label: "Monitoring" },
+            { value: 150, suffix: "+", label: "Countries Served" },
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.7 + index * 0.2, ease: "easeOut" }}
+            >
+              <div className="text-3xl md:text-4xl font-extrabold text-[#0184fa] mb-3">
+                {stat.value === "24/7" ? "24/7" : inView ? <CountUp end={stat.value} duration={2} suffix={stat.suffix || ""} /> : "0"}
+              </div>
+              <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
     </section>
   );
 }

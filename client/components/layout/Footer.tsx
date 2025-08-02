@@ -15,46 +15,46 @@ const contactInfo = [
 export function Footer() {
   return (
     <motion.footer 
-      className="bg-slate-900 text-white py-20"
+      className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-12"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 lg:px-12">
         <motion.div 
-          className="grid md:grid-cols-4 gap-12"
+          className="grid grid-cols-1 md:grid-cols-4 gap-8 justify-between"
           initial={{ y: 50 }}
           whileInView={{ y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 space-y-6">
             <motion.div 
-              className="flex items-center space-x-3 mb-6"
+              className="flex items-center space-x-4 mb-4"
               whileHover={{ scale: 1.05 }}
             >
               <motion.div 
-                className="w-12 h-12 radian-gradient rounded-lg flex items-center justify-center"
+                className="w-12 h-12 radian-gradient rounded-xl flex items-center justify-center shadow-lg"
                 animate={{ 
                   boxShadow: [
-                    "0 0 0px hsl(var(--radian-blue))",
-                    "0 0 20px hsl(var(--radian-blue) / 0.5)",
-                    "0 0 0px hsl(var(--radian-blue))"
+                    "0 0 8px hsl(var(--radian-blue) / 0.3)",
+                    "0 0 24px hsl(var(--radian-blue) / 0.6)",
+                    "0 0 8px hsl(var(--radian-blue) / 0.3)"
                   ]
                 }}
-                transition={{ duration: 3, repeat: Infinity }}
+                transition={{ duration: 2, repeat: Infinity }}
               >
                 <Zap className="h-7 w-7 text-white" />
               </motion.div>
               <div>
-                <div className="text-2xl font-bold">Radian-Tech</div>
-                <div className="text-sm text-gray-400">Advanced Technology Solutions</div>
+                <div className="text-2xl font-bold tracking-tight">Radian-Tech</div>
+                <div className="text-sm text-gray-300">Advanced Technology Solutions</div>
               </div>
             </motion.div>
             
             <motion.p 
-              className="text-gray-300 mb-8 leading-relaxed max-w-md"
+              className="text-gray-200 leading-relaxed max-w-md text-sm"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -68,7 +68,7 @@ export function Footer() {
               {contactInfo.map((contact, index) => (
                 <motion.div 
                   key={index}
-                  className="flex items-center space-x-3 text-gray-300 group cursor-pointer"
+                  className="flex items-center space-x-3 text-gray-200 group cursor-pointer"
                   initial={{ x: -20, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
@@ -76,27 +76,28 @@ export function Footer() {
                   viewport={{ once: true }}
                 >
                   <contact.icon className="h-5 w-5 text-primary group-hover:text-accent transition-colors" />
-                  <span className="group-hover:text-white transition-colors">{contact.text}</span>
+                  <span className="group-hover:text-white transition-colors text-sm">{contact.text}</span>
                 </motion.div>
               ))}
             </div>
           </div>
           
           <motion.div
+            className="space-y-5"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold mb-6 text-lg">Solutions</h3>
-            <ul className="space-y-3 text-gray-300">
+            <h3 className="font-semibold text-lg tracking-wide text-gray-100">Solutions</h3>
+            <ul className="space-y-2 text-gray-200">
               {solutionsLinks.map((item, index) => (
                 <motion.li 
                   key={index}
-                  whileHover={{ x: 5 }}
+                  whileHover={{ x: 5, color: 'hsl(var(--primary))' }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-primary transition-colors">
+                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-primary transition-colors text-sm">
                     {item}
                   </Link>
                 </motion.li>
@@ -105,20 +106,21 @@ export function Footer() {
           </motion.div>
           
           <motion.div
+            className="space-y-5 flex flex-col items-center"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold mb-6 text-lg">Company</h3>
-            <ul className="space-y-3 text-gray-300">
+            <h3 className="font-semibold text-lg tracking-wide text-gray-100">Company</h3>
+            <ul className="space-y-2 text-gray-200 text-center">
               {companyLinks.map((item, index) => (
                 <motion.li 
                   key={index}
-                  whileHover={{ x: 5 }}
+                  whileHover={{ x: 5, color: 'hsl(var(--primary))' }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-primary transition-colors">
+                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-primary transition-colors text-sm">
                     {item}
                   </Link>
                 </motion.li>
@@ -128,22 +130,23 @@ export function Footer() {
         </motion.div>
         
         <motion.div 
-          className="border-t border-gray-700 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center"
+          className="border-t border-gray-700/50 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-400 text-sm">
-            &copy; 2024 Radian-Tech. All rights reserved. • Advanced Technology Solutions
+          <p className="text-gray-300 text-sm text-center md:text-left">
+            &copy; {new Date().getFullYear()} Radian-Tech. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex space-x-6">
             {legalLinks.map((item, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1, color: 'hsl(var(--primary))' }}
+                transition={{ duration: 0.2 }}
               >
-                <Link to={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link to={`/${item.toLowerCase()}`} className="text-gray-300 hover:text-primary transition-colors text-sm">
                   {item}
                 </Link>
               </motion.div>

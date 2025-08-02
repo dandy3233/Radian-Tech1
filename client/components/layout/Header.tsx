@@ -4,7 +4,7 @@ import {
   Menu, X, Phone, Search, User,
 } from 'lucide-react';
 import {
-  FaFacebookF, FaTwitter, FaYoutube, FaTiktok,
+  FaFacebookF, FaTwitter, FaYoutube, FaLinkedin,
 } from 'react-icons/fa';
 import { MdLocationOn, MdEmail } from 'react-icons/md';
 import { BsClock } from 'react-icons/bs';
@@ -54,7 +54,7 @@ export function Header() {
                 { href: 'https://facebook.com', icon: <FaFacebookF /> },
                 { href: 'https://twitter.com', icon: <FaTwitter /> },
                 { href: 'https://youtube.com', icon: <FaYoutube /> },
-                { href: 'https://tiktok.com', icon: <FaTiktok /> },
+                { href: 'https://linkedin.com/in/dandy-takilu-003894242', icon: <FaLinkedin /> }
               ].map((item, idx) => (
                 <a
                   key={idx}
@@ -110,12 +110,12 @@ export function Header() {
 
             {/* Right Actions */}
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="p-2 hover:bg-muted rounded-lg hover:scale-110 transition-all">
+              {/* <button className="p-2 hover:bg-muted rounded-lg hover:scale-110 transition-all">
                 <User className="h-5 w-5 text-muted-foreground" />
               </button>
               <button className="p-2 hover:bg-muted rounded-lg hover:scale-110 transition-all">
                 <Search className="h-5 w-5 text-muted-foreground" />
-              </button>
+              </button> */}
 
              <a href="ContactUs">
   <Button
@@ -143,7 +143,7 @@ export function Header() {
                   <div className="font-medium">Call Anytime</div>
                   <div className="relative group font-mono cursor-pointer leading-tight font-semibold">
                     <span className="hover:text-red-500 transition-colors duration-300">
-                      09-27-44-61-71
+                      +251-927-44-61-71
                     </span>
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                   </div>
